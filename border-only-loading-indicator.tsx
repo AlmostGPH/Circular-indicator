@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-export default function OutlineLoadingIndicator() {
+export default function BorderOnlyLoadingIndicator() {
   const [rotations, setRotations] = useState([0, 0, 0, 0])
 
   useEffect(() => {

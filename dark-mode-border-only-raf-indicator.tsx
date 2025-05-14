@@ -52,13 +52,18 @@ export default function DarkModeBorderOnlyRAFIndicator() {
       }
     }
   }, [])
-
   return (
     <div className="relative w-64 h-64 flex items-center justify-center bg-gray-900 rounded-xl p-4">
       {/* SVG container */}
       <svg viewBox="0 0 100 100" className="w-full h-full">
+        <defs>
+          <filter id="glass-outline-dark-raf" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#374151" floodOpacity="0.5" />
+          </filter>
+        </defs>
+      
         {/* Background circle */}
-        <circle cx="50" cy="50" r="48" fill="transparent" stroke="#374151" strokeWidth="6" strokeLinecap="round" />
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#374151" strokeWidth="6" strokeLinecap="round" />
 
         {/* Multiple blue layers with different radii and rotation speeds */}
         {blueShades.map((color, index) => (
@@ -68,23 +73,21 @@ export default function DarkModeBorderOnlyRAFIndicator() {
               transform: `rotate(${rotationsRef.current[index]}deg)`,
               transformOrigin: "center",
             }}
-          >
-            {/* 使用 stroke-opacity 确保边框不透明 */}
+          >            {/* Rotating glassy stroke rings */}
             <circle
               cx="50"
               cy="50"
               r={radii[index]}
-              fill="transparent"
+              fill="none"
               stroke={color}
               strokeWidth={strokeWidths[index]}
               strokeLinecap="round"
               strokeDasharray={dashArrays[index]}
-              strokeOpacity="1"
+              strokeOpacity="0.7"
+              filter="url(#glass-outline-dark-raf)"
             />
           </g>
-        ))}
-
-        {/* Center transparent circle */}
+        ))}        {/* Center fully transparent circle (glass hole effect) */}
         <circle cx="50" cy="50" r="28" fill="#1f2937" />
       </svg>
     </div>
