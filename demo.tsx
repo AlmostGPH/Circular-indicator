@@ -1,3 +1,4 @@
+import ArcLoadingIndicator from "./arc-loading-indicator"
 import MultiLayerLoadingIndicator from "./multi-layer-loading-indicator"
 import RequestAnimationFrameIndicator from "./request-animation-frame-indicator"
 import CustomizableLoadingIndicator from "./customizable-loading-indicator"
@@ -15,6 +16,19 @@ import DarkModeBorderOnlyRAFIndicator from "./dark-mode-border-only-raf-indicato
 export default function Demo() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-16 p-8 bg-white">
+      <div className="flex flex-col items-center gap-4 w-full">
+        <h2 className="text-2xl font-medium">Arc Loading Indicator</h2>
+        <p className="text-gray-500 text-center max-w-md">
+          单层带圆角的扇形边框加载指示器
+        </p>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">圆弧加载指示器</p>
+            <ArcLoadingIndicator />
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-col items-center gap-4 w-full">
         <h2 className="text-2xl font-medium">Standard Implementation</h2>
         <p className="text-gray-500 text-center max-w-md">
