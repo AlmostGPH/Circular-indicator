@@ -7,6 +7,10 @@ import OutlineLoadingIndicator from "./outline-loading-indicator"
 import DarkModeOutlineIndicator from "./dark-mode-outline-indicator"
 import OutlineRAFIndicator from "./outline-raf-indicator"
 import DarkModeOutlineRAFIndicator from "./dark-mode-outline-raf-indicator"
+import BorderOnlyLoadingIndicator from "./border-only-loading-indicator"
+import DarkModeBorderOnlyIndicator from "./dark-mode-border-only-indicator"
+import BorderOnlyRAFIndicator from "./border-only-raf-indicator"
+import DarkModeBorderOnlyRAFIndicator from "./dark-mode-border-only-raf-indicator"
 
 export default function Demo() {
   return (
@@ -25,8 +29,12 @@ export default function Demo() {
                 <MultiLayerLoadingIndicator />
               </div>
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <p className="mb-2 text-xs text-gray-500">半透明版</p>
                 <OutlineLoadingIndicator />
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <BorderOnlyLoadingIndicator />
               </div>
             </div>
           </div>
@@ -38,8 +46,12 @@ export default function Demo() {
                 <DarkModeIndicator />
               </div>
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <p className="mb-2 text-xs text-gray-500">半透明版</p>
                 <DarkModeOutlineIndicator />
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <DarkModeBorderOnlyIndicator />
               </div>
             </div>
           </div>
@@ -60,8 +72,12 @@ export default function Demo() {
                 <RequestAnimationFrameIndicator />
               </div>
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <p className="mb-2 text-xs text-gray-500">半透明版</p>
                 <OutlineRAFIndicator />
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <BorderOnlyRAFIndicator />
               </div>
             </div>
           </div>
@@ -73,8 +89,12 @@ export default function Demo() {
                 <DarkModeRAFIndicator />
               </div>
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <p className="mb-2 text-xs text-gray-500">半透明版</p>
                 <DarkModeOutlineRAFIndicator />
+              </div>
+              <div className="flex flex-col items-center">
+                <p className="mb-2 text-xs text-gray-500">边框版</p>
+                <DarkModeBorderOnlyRAFIndicator />
               </div>
             </div>
           </div>

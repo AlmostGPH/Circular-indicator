@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-export default function DarkModeOutlineRAFIndicator() {
+export default function BorderOnlyRAFIndicator() {
   const requestRef = useRef<number>()
   const previousTimeRef = useRef<number>()
   const rotationsRef = useRef<number[]>([0, 0, 0, 0])
@@ -52,29 +52,13 @@ export default function DarkModeOutlineRAFIndicator() {
       }
     }
   }, [])
+
   return (
-    <div className="relative w-64 h-64 flex items-center justify-center bg-gray-900 rounded-xl p-4">
+    <div className="relative w-64 h-64 flex items-center justify-center">
       {/* SVG container */}
       <svg viewBox="0 0 100 100" className="w-full h-full">
-        {/* Glassy filter definition */}
-        <defs>
-          <filter id="glass-filter-dark-raf" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  
-                      0 1 0 0 0  
-                      0 0 1 0 0  
-                      0 0 0 13 -7"
-              result="glass"
-            />
-            <feBlend in="SourceGraphic" in2="glass" mode="normal" />
-          </filter>
-        </defs>
-        
         {/* Background circle */}
-        <circle cx="50" cy="50" r="48" fill="transparent" stroke="#374151" strokeWidth="6" strokeLinecap="round" />
+        <circle cx="50" cy="50" r="48" fill="transparent" stroke="#f3f4f6" strokeWidth="6" strokeLinecap="round" />
 
         {/* Multiple blue layers with different radii and rotation speeds */}
         {blueShades.map((color, index) => (
@@ -85,23 +69,23 @@ export default function DarkModeOutlineRAFIndicator() {
               transformOrigin: "center",
             }}
           >
+            {/* 使用 stroke-opacity 确保边框不透明 */}
             <circle
               cx="50"
               cy="50"
               r={radii[index]}
-              fill="none"
+              fill="transparent"
               stroke={color}
               strokeWidth={strokeWidths[index]}
               strokeLinecap="round"
               strokeDasharray={dashArrays[index]}
-              strokeOpacity="0.7"
-              filter="url(#glass-filter-dark-raf)"
+              strokeOpacity="1"
             />
           </g>
         ))}
 
         {/* Center transparent circle */}
-        <circle cx="50" cy="50" r="28" fill="#1f2937" />
+        <circle cx="50" cy="50" r="28" fill="white" />
       </svg>
     </div>
   )

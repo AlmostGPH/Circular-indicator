@@ -38,11 +38,27 @@ export default function OutlineLoadingIndicator() {
     "80 280", // Third layer
     "60 300", // Fourth layer
   ]
-
   return (
     <div className="relative w-64 h-64 flex items-center justify-center">
       {/* SVG container */}
       <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Glassy filter definition */}
+        <defs>
+          <filter id="glass-filter-outline" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  
+                      0 1 0 0 0  
+                      0 0 1 0 0  
+                      0 0 0 13 -7"
+              result="glass"
+            />
+            <feBlend in="SourceGraphic" in2="glass" mode="normal" />
+          </filter>
+        </defs>
+        
         {/* Background circle (lightest shade) */}
         <circle cx="50" cy="50" r="48" fill="transparent" stroke="#f3f4f6" strokeWidth="6" strokeLinecap="round" />
 
@@ -54,7 +70,8 @@ export default function OutlineLoadingIndicator() {
               transform: `rotate(${rotations[index]}deg)`,
               transformOrigin: "center",
             }}
-          >            <circle
+          >            
+            <circle
               cx="50"
               cy="50"
               r={radii[index]}
@@ -63,7 +80,8 @@ export default function OutlineLoadingIndicator() {
               strokeWidth={strokeWidths[index]}
               strokeLinecap="round"
               strokeDasharray={dashArrays[index]}
-              strokeOpacity="1"
+              strokeOpacity="0.7"
+              filter="url(#glass-filter-outline)"
             />
           </g>
         ))}
