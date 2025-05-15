@@ -1,8 +1,10 @@
 import ArcLoadingIndicator from "./arc-loading-indicator"
+import MultiLayerArcLoadingIndicator from "./multi-layer-arc-loading-indicator"
 import MultiLayerLoadingIndicator from "./multi-layer-loading-indicator"
 import RequestAnimationFrameIndicator from "./request-animation-frame-indicator"
 import CustomizableLoadingIndicator from "./customizable-loading-indicator"
 import DarkModeIndicator from "./dark-mode-indicator"
+import MultiArcIndicator from "./multi-arc-indicator"
 import DarkModeRAFIndicator from "./dark-mode-raf-indicator"
 import OutlineLoadingIndicator from "./outline-loading-indicator"
 import DarkModeOutlineIndicator from "./dark-mode-outline-indicator"
@@ -25,6 +27,31 @@ export default function Demo() {
           <div className="flex flex-col items-center">
             <p className="mb-2 text-sm text-gray-500">圆弧加载指示器</p>
             <ArcLoadingIndicator />
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">多层蓝色圆弧加载指示器(外淡内深)</p>
+            <MultiLayerArcLoadingIndicator />
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">多层蓝色圆弧加载指示器(外深内淡)</p>
+            <MultiLayerArcLoadingIndicator reverseColors={true} />
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">多层蓝色圆弧(暗色模式)</p>
+            <div className="bg-gray-900 p-4 rounded-lg flex flex-row gap-4">
+              <MultiLayerArcLoadingIndicator darkMode={true} />
+              <MultiLayerArcLoadingIndicator darkMode={true} reverseColors={true} />
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">多层圆弧加载指示器</p>
+            <MultiArcIndicator />
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="mb-2 text-sm text-gray-500">多层圆弧加载指示器 (暗色模式)</p>
+            <div className="bg-gray-900 p-4 rounded-lg">
+              <MultiArcIndicator darkMode={true} />
+            </div>
           </div>
         </div>
       </div>

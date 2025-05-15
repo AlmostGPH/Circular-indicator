@@ -30,9 +30,13 @@ export default function ArcLoadingIndicator({
     { angle: 110, color: "#f97316", gap: 10 }, // 橙色
   ],  cornerRadius = 5,
   speed = 1,
-  changeInterval = 2000, // 默认2秒变化一次
+  changeInterval = 1500, // 默认2秒变化一次
   maxAngleChange = 40    // 最大角度变化量，避免变化过于剧烈
 }: ArcLoadingIndicatorProps) {
+  // 添加一个空的服务端组件
+  if (typeof window === 'undefined') {
+    return <div className="relative w-64 h-64 flex items-center justify-center"></div>
+  }
   // 创建旋转状态
   const [rotation, setRotation] = useState(0)
   // 创建扇形状态，用于管理动画
